@@ -73,12 +73,6 @@ def main():
         write_csv(output_path, fieldnames, filtered_parts)
         log(f'Wrote data feed file: {output_path}')
 
-        # Git commit
-        timestamp = datetime.now().strftime('%Y-%m-%d %H:%M:%S')
-        commit_msg = f"Updated data feed file after processing delta parts on {timestamp}"
-        git_commit(output_path, commit_msg)
-        log('Committed data feed file to git.')
-
         # Delete delta file
         os.remove(delta_file)
         log(f'Deleted processed delta file: {delta_file}')
